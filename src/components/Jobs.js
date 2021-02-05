@@ -1,7 +1,19 @@
 import React from "react";
 import Job from "./Job";
 
-function Jobs({ jobs, search, seniority, location, type }) {
+function Jobs({ jobs, search, seniority, location, type, loading }) {
+  if (loading) {
+    return (
+      <div
+        className="d-flex justify-content-center"
+        style={{ marginTop: "7%" }}
+      >
+        <div className="spinner-grow" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
   if (search.length > 0) {
     jobs = jobs.filter((job) =>
       job.title.toLowerCase().includes(search.toLowerCase())

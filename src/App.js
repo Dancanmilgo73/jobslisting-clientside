@@ -11,12 +11,16 @@ const initialValues = {
 
 function App() {
   const [values, setValues] = useState(initialValues);
+  const [loading, setLoading] = useState(false);
   async function getJobs() {
+    setLoading(true);
     const res = await fetch("https://job-listing-server.herokuapp.com/");
+
     var jobs = await res.json();
     // jobs && jobs.map((job) => console.log(job.title));
     //console.log(jobs);
     setJobList(jobs);
+    setLoading(false);
   }
   const [jobList, setJobList] = useState([]);
   useEffect(() => {
@@ -30,13 +34,16 @@ function App() {
       [name]: value,
     });
   };
+  const handleClick = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="App">
       <div className="page-top">
         <h1>Job Guru</h1>
       </div>
-      <div className="search-box">
+      <div className="search-box" id="search">
         <form>
           <input
             className="search-bar"
@@ -45,16 +52,9 @@ function App() {
             name="searchInput"
             onChange={handleChange}
           />
-          <button
-            type="submit"
-            className="search-button btn btn-success"
-            value="Submit"
-          >
-            <i className="bi bi-arrow-clockwise"></i>
+          <button className="btn btn-success" onClick={handleClick}>
+            <i className="bi bi-arrow-clockwise">Clear Search</i>
           </button>
-          <>
-            <i className="bi bi-arrow-clockwise"></i>
-          </>
         </form>
       </div>
       <div>
@@ -99,6 +99,7 @@ function App() {
         seniority={values.Seniority}
         location={values.Location}
         type={values.selectedRadio}
+        loading={loading}
       />
     </div>
   );
