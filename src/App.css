@@ -2,7 +2,6 @@
   text-align: center;
   width: 100%;
   margin: 0;
-  text-align: center;
 }
 
 .App-logo {
@@ -15,16 +14,30 @@ input {
 
   padding: 1%;
 }
-form {
+search-box {
+  /* display: flex;
+  flex-direction: row; */
+  min-height: 10vh;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .search-bar {
+  width: 50%;
+  border: none;
+  padding: 10px;
+}
+.search-button {
+  border: none;
+  padding: 10px 20px;
+  color: white;
+}
+/* .search-bar {
   border-bottom-left-radius: 7%;
   border-bottom-right-radius: 7%;
   width: 33.25%;
   background-color: white;
-}
+} */
 .outer {
   background-color: lightgrey;
   width: 75vw;
@@ -40,4 +53,20 @@ form {
     flex-wrap: wrap;
     justify-content: space-around;
   }
+}
+/* .search-box {
+  width: 100%;
+} */
+.select-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1%;
+  flex-wrap: wrap;
+}
+
+select,
+.form-check {
+  margin-right: 4%;
+  padding: 0.5%;
 }
