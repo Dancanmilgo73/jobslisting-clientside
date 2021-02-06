@@ -1,7 +1,9 @@
 import React from "react";
 import Job from "./Job";
+import { useState } from "react";
 
 function Jobs({ jobs, search, seniority, location, type, loading }) {
+  const [jobsPerPage, setJobsPerPage] = useState(18);
   if (loading) {
     return (
       <div
@@ -29,14 +31,29 @@ function Jobs({ jobs, search, seniority, location, type, loading }) {
       job.type.toLowerCase().includes(type.toLowerCase())
     );
   }
+  const handleClick = () => {
+    setJobsPerPage((prevValue) =>
+      prevValue >= jobs.length ? (prevValue = 18) : prevValue + 18
+    );
+  };
+  const reset = () => {
+    setJobsPerPage(18);
+  };
 
   return (
     <div className="outer">
       <div className="JobsList">
-        {jobs.map((job) => (
+        {jobs.slice(0, jobsPerPage).map((job) => (
           <Job job={job} />
         ))}
       </div>
+      <button onClick={handleClick} className="btn btn-outline-info">
+        Load More
+        {jobsPerPage}
+      </button>
+      <button onClick={reset} className="btn btn-outline-warning">
+        Reset
+      </button>
     </div>
   );
 }

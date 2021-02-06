@@ -34,9 +34,17 @@ function App() {
       [name]: value,
     });
   };
+  //handle clear search
   const handleClick = (e) => {
     e.preventDefault();
+    document.getElementById("formId").reset();
+    document.getElementById("selectField").reset();
   };
+  /* 
+  const handleClick = (e) => {
+    e.preventDefault();
+    setValues({ ...values });
+  }; */
 
   return (
     <div className="App">
@@ -44,7 +52,7 @@ function App() {
         <h1>Job Guru</h1>
       </div>
       <div className="search-box" id="search">
-        <form>
+        <form id="formId">
           <input
             className="search-bar"
             type="text"
@@ -52,46 +60,52 @@ function App() {
             name="searchInput"
             onChange={handleChange}
           />
-          <button className="btn btn-success" onClick={handleClick}>
+          <button
+            className="btn btn-success"
+            onClick={handleClick}
+            type="submit"
+          >
             <i className="bi bi-arrow-clockwise">Clear Search</i>
           </button>
         </form>
       </div>
       <div>
-        <div className="select-field">
-          <select onChange={handleChange} defaultValue="" name="Seniority">
-            <option value="">Seniority</option>
-            <option value="Entry_level">Entry Level</option>
-            <option value="Mid_level">Mid-level</option>
-            <option value="Senior_level">Senior-level</option>
-          </select>
-          <select onChange={handleChange} defaultValue="" name="Location">
-            <option value="">Location</option>
-            <option value="World">World</option>
-            <option value="Remote">Remote</option>
-            <option value="Kenya">Kenya</option>
-          </select>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="selectedRadio"
-              value="Full time"
-              onChange={handleChange}
-            />
-            <label className="form-check-label">Full Time</label>
+        <form id="selectField">
+          <div className="select-field">
+            <select onChange={handleChange} defaultValue="" name="Seniority">
+              <option value="">Seniority</option>
+              <option value="Entry_level">Entry Level</option>
+              <option value="Mid_level">Mid-level</option>
+              <option value="Senior_level">Senior-level</option>
+            </select>
+            <select onChange={handleChange} defaultValue="" name="Location">
+              <option value="">Location</option>
+              <option value="World">World</option>
+              <option value="Remote">Remote</option>
+              <option value="Kenya">Kenya</option>
+            </select>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="selectedRadio"
+                value="Full time"
+                onChange={handleChange}
+              />
+              <label className="form-check-label">Full Time</label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="selectedRadio"
+                value="Part time"
+                onChange={handleChange}
+              />
+              <label className="form-check-label">Part Time</label>
+            </div>
           </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="selectedRadio"
-              value="Part time"
-              onChange={handleChange}
-            />
-            <label className="form-check-label">Part Time</label>
-          </div>
-        </div>
+        </form>
       </div>
       <Jobs
         jobs={jobList}
