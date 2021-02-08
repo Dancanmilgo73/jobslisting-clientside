@@ -112,4 +112,9 @@ select:hover {
     flex-direction: column;
     justify-content: center;
   }
+  select {
+    border: none;
+    padding: 10px;
+    margin-right: 0;
+  }
 }
