@@ -40,11 +40,13 @@ search-box {
   background-color: white;
 } */
 .outer {
-  width: 75vw;
+  width: 75%;
   margin-bottom: 1%;
   margin: auto;
-  /* border-radius: 2%;
-  box-shadow: 3px 3px 5px 6px rgb(151, 150, 150) */
+  border-radius: 2%;
+  /* box-shadow: 3px 3px 5px 6px rgb(151, 150, 150); */
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (min-width: 40em) {
@@ -77,6 +79,9 @@ select,
   background-color: rgb(235, 228, 228);
   border-bottom-left-radius: 57vw;
   font-family: "Courier New", Courier, monospace;
+}
+select {
+  border: none;
 }
 .form-check-input,
 select:hover {
@@ -116,5 +121,6 @@ select:hover {
     border: none;
     padding: 10px;
     margin-right: 0;
+    margin-left: 0;
   }
 }
