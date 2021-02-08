@@ -1,4 +1,7 @@
 import "./Job.css";
+
+import DescriptionPopUp from "./descriptionPopUp";
+
 function Job({ job }) {
   return (
     <div className="card" style={{ width: "18rem" }}>
@@ -11,14 +14,18 @@ function Job({ job }) {
         <h5 className="card-title">{job.title}</h5>
         <p className="card-text text-muted">{job.company}</p>
         <p className="text-primary">{job.location}</p>
-        <a
-          href={job.url}
-          className=" btn btn-primary"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Apply
-        </a>
+        <div className="card-buttons">
+          <DescriptionPopUp job={job} />
+
+          <a
+            href={job.url}
+            className=" btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Apply
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -17,8 +17,6 @@ function App() {
     const res = await fetch("https://job-listing-server.herokuapp.com/");
 
     var jobs = await res.json();
-    // jobs && jobs.map((job) => console.log(job.title));
-    //console.log(jobs);
     setJobList(jobs);
     setLoading(false);
   }
@@ -34,17 +32,12 @@ function App() {
       [name]: value,
     });
   };
-  //handle clear search
+
   const handleClick = (e) => {
     e.preventDefault();
+    setValues(initialValues);
     document.getElementById("formId").reset();
-    document.getElementById("selectField").reset();
   };
-  /* 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setValues({ ...values });
-  }; */
 
   return (
     <div className="App">
@@ -56,7 +49,7 @@ function App() {
           <input
             className="search-bar"
             type="text"
-            placeholder="Search..."
+            placeholder="Search by title..."
             name="searchInput"
             onChange={handleChange}
           />
@@ -67,10 +60,7 @@ function App() {
           >
             <i className="bi bi-arrow-clockwise">Clear Search</i>
           </button>
-        </form>
-      </div>
-      <div>
-        <form id="selectField">
+
           <div className="select-field">
             <select onChange={handleChange} defaultValue="" name="Seniority">
               <option value="">Seniority</option>
@@ -80,8 +70,8 @@ function App() {
             </select>
             <select onChange={handleChange} defaultValue="" name="Location">
               <option value="">Location</option>
-              <option value="World">World</option>
               <option value="Remote">Remote</option>
+              <option value="Usa">USA</option>
               <option value="Kenya">Kenya</option>
             </select>
             <div className="form-check">

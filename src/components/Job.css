@@ -14,9 +14,8 @@
   display: flex;
   flex-direction: row;
 }
-.page-top {
-  width: 100%;
-  padding: 1%;
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  border-bottom-left-radius: 57vw;
+.card-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
